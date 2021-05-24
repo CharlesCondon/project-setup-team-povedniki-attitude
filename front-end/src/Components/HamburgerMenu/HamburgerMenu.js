@@ -13,21 +13,27 @@ function HamburgerMenu() {
         <>
             <Menu isOpen={menuOpen} onOpen={onMenuOpen} >
                 <div className='itemContainer'>
-                    <img className='icon' src='./img/home.png'></img>
+                    <img className='icon' src='./img/home.png' alt='home icon'></img>
                     <a id="home" className="bm-item menu-item" href="/">Home</a>
                 </div>
                 <div className='itemContainer'>
-                    <img className='icon' src='./img/search.png'></img>
+                    <img className='icon' src='./img/search.png' alt='search icon'></img>
                     <a id="about" className="bm-item menu-item" href="/searchpage">Search for a Drink</a>
                 </div>
                 <div className='itemContainer'>
-                    <img className='icon' src='./img/dictionary.png'></img>
+                    <img className='icon' src='./img/dictionary.png' alt='dictionary icon'></img>
                     <a id="list" className="bm-item menu-item" href="/completedrinklist">Drink Database</a>
                 </div>
                 <div className='itemContainer'>
-                    <img className='icon' src='./img/account.png'></img>
+                    <img className='icon' src='./img/information.png' alt='about us icon'></img>
+                    <a id="list" className="bm-item menu-item" href="/aboutus">About Us</a>
+                </div>
+                <div className='itemContainer'>
+                    <img className='icon' src='./img/account.png' alt='account icon'></img>
                     <a id="contact" className="bm-item menu-item" href="/signin">Account</a>
                 </div>
+
+                
             </Menu>
         </>
     )

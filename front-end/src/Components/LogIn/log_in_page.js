@@ -3,10 +3,25 @@ import '../SignIn/sign_in_page.css';
 import React, { useState } from 'react';
 //import ReactDOM from 'react-dom';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-
+import axios from 'axios';
 
 function LogIn(){
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      axios.post("http://localhost:3000/login", {
+        email,
+        password
+    } )
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   return(
     <>
       <div id='pageContainer'>
@@ -16,16 +31,18 @@ function LogIn(){
         </div>
         <main>
             <div className="sign-in-container">
+            <form method="POST" action="http://174.138.46.165:3000/login" >
                 <div class="field-container">
                     <div class="field-label">Email</div>
-                    <input class="sign-in-field" id="emailField" type="text"></input>
+                    <input class="sign-in-field" id="emailField" type="text" name = "username" onChange={e => setEmail(e.target.value)}></input>
                 </div>
                 <div class="field-container">
                     <div class="field-label">Password</div>
-                    <input class="sign-in-field" id="pwdField" type="password"></input>
+                    <input class="sign-in-field" id="pwdField" type="password" name = "password" onChange={e => setPassword(e.target.value)}></input>
                 </div>
-                <div className="sign-in-button mini">Sign In</div>
+                <input class= "sign-in-button mini" type ="submit"></input>
                 <div class="sign-in-footer">Don't have an account? <a href="./register">Register here</a></div>
+                </form>
             </div>
         </main>
         <footer>

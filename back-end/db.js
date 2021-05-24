@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 
-const IngredientSchema = new mongoose.Schema({
+const FavoritesSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    ingredients: [String]
+    favorites: [String]
 });
 
 const UserSchema = new mongoose.Schema({
@@ -12,22 +12,21 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    email: {
+    name: {
         type: String,
-        unique: true,
         required: true
     },
     password: {
         type: String,
         required: true
     },
-    ingredients: {
+    favorites: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ingredient'
+        ref: 'Favorite'
     }
 });
 
-mongoose.model('Ingredient', IngredientSchema);
+mongoose.model('Favorite', FavoritesSchema);
 mongoose.model('User', UserSchema);
 
-mongoose.connect('mongodb://localhost/bottomsup');
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.d6uyu.mongodb.net/bottomsup?retryWrites=true&w=majority`);
